@@ -127,3 +127,9 @@ function hideBox() {
 /*function showBox() {
     document.getElementById("emptyTableAnimation").hidden = false
 }*/
+
+function showFileExplorer() {
+    var fileExplorer = document.getElementById('fileUpload')
+    fileExplorer.click()
+    console.log(fileExplorer.)
+}

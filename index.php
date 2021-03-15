@@ -586,7 +586,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">What is the point of this?</a></li>
                             <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item" href="help">Help Documentation</a></li>
+                            <li><a class="dropdown-item" href="routes/help">Help Documentation</a></li>
                             <li><a class="dropdown-item" href="#">Terms of Policies</a></li>
                         </ul>
                     </li>

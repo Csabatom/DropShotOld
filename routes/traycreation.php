@@ -234,7 +234,9 @@
     </nav>
     <div class="centered" id="emptyTableAnimation">
         <lottie-player src="../assets/animations/empty.json" style="pointer-events: none;" background="transparent" speed="1" autoplay></lottie-player>
-        <div class="text_help">Drop files, or click <a href="">here</a></div>
+        <div class="text_help">Drop files, or click <a href="#" onclick="showFileExplorer()">here</a></div>
+        <!-- manual file upload -->
+        <input type="file" id="fileUpload" style="display: none">
     </div>
     <!-- <div id="drop_file_zone"></div> -->
     <div>
