@@ -16,26 +16,6 @@ function onDragLeave() {
 }
 
 window.onload = function () {
-    var table = document.getElementById("table_files");
-    $(function() {
-        var previous = $(table).text();
-        $check = function() {
-            if ($(table).text() != previous) {
-                if(table.rows.length == 0) {
-                    alert("No item")
-                    var emptyTable = document.createElement("<div class='centered' id='emptyTableAnimation'>" +
-                        + "<lottie-player src='empty.json' style='pointer-events: none;' background='transparent' speed='1' autoplay></lottie-player>" +
-                        + "<div class='text_help'>Drop files, or click <a href=''>here</a></div>" +
-                    + "</div>")
-                } else {
-                    docuemnt.getElementById("emptyTableAnimation").remove();
-                }
-            }
-            previous = $(table).text();
-        }
-        setInterval(function() { $check(); }, 10);
-    });
-
     var countDownDate = new Date("Mar 14, 2021 00:23:56").getTime();
     document.getElementById("trayExpirationTime").innerHTML = "CALCULATING..."
     var x = setInterval(function() {
@@ -57,11 +37,13 @@ window.onload = function () {
 function deleteFileRow(id) {
     var table = document.getElementById("table_files");
     document.getElementById(table).deleteRow(id+1);
+    console.log(document.getElementById(table).length)
 }
 
 var fileobj;
 function upload_file(e) {
     var table = document.getElementById("table_files");
+    hideBox();
 
     Array.from(event.dataTransfer.files).forEach((file) => {
         var lastRow = table.rows[ table.rows.length - 1 ];
@@ -136,3 +118,12 @@ function isTogglerOpen() {
         $("#label_form_code").css('color', 'black');
     }
 }
+
+// LEVI - Doboz eltüntetés (2021.03.15)
+function hideBox() {
+    document.getElementById("emptyTableAnimation").hidden = true
+}
+
+/*function showBox() {
+    document.getElementById("emptyTableAnimation").hidden = false
+}*/
