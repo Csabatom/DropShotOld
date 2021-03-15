@@ -614,7 +614,7 @@
         </div>
     </div>
     <footer style="position: absolute; bottom: 10px; left: 10px;">
-        Version 1.12
+        Version Number
     </footer>
 </body>
 </html>
