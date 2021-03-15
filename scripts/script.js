@@ -119,6 +119,10 @@ function isTogglerOpen() {
     }
 }
 
+function createTray() {
+    alert("Még nincs kész")
+}
+
 // LEVI - Doboz eltüntetés (2021.03.15)
 function hideBox() {
     document.getElementById("emptyTableAnimation").hidden = true
@@ -131,5 +135,5 @@ function hideBox() {
 function showFileExplorer() {
     var fileExplorer = document.getElementById('fileUpload')
     fileExplorer.click()
-    console.log(fileExplorer.)
+    // console.log(fileExplorer.)
 }

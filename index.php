@@ -567,14 +567,14 @@
     </div>
     <nav class="navbar navbar-custom navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index"><img src="appicon.png"></a>
+            <a class="navbar-brand" href="index"><img src="assets/images/appicon.png"></a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" onclick="isTogglerOpen()">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Storage</a>
+                        <a class="nav-link active" aria-current="page" href="routes/storage">Storage</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="routes/traycreation">Create Tray</a>

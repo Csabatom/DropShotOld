@@ -238,11 +238,6 @@
         <!-- manual file upload -->
         <input type="file" id="fileUpload" style="display: none">
     </div>
-    <!-- <div style="text-align: end; margin-right: 20px;">
-        <form method="post" onsubmit="createTray()">
-            <input type="button" class="btn btn-outline-primary" value="Create Tray">
-        </form>
-    </div> -->
     <!-- <div id="drop_file_zone"></div> -->
     <div>
         <table id="table_files">  
