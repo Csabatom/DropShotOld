@@ -15,122 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script>
-        window.googletag = window.googletag || {cmd: []};
-        googletag.cmd.push(function() {
-            googletag
-                .defineSlot(
-                    '/6355419/Travel/Europe/France/Paris', [300, 250], 'banner-ad')
-                .addService(googletag.pubads());
-            googletag.enableServices();
-        });
-
-        function checkCodeValidity() {
-            var form = document.forms["form_code"];
-            var input_code1 = form['input_code1'].value;
-            var input_code2 = form['input_code2'].value;
-            var input_code3 = form['input_code3'].value;
-            var input_code4 = form['input_code4'].value;
-            if(input_code1 != '' && input_code2 != '' && input_code3 != '' && input_code4 != '') {
-                // alert("Valid code!")
-                form.submit();
-            } else {
-                // alert("Invalid code!")
-            }
-        }
-
-        function onDragEnter() {
-            var dropzone = document.getElementById("drop_file_zone");
-            // dropzone.style.backgroundColor = "black";
-            // dropzone.style.pointerEvents = "all";
-            // dropzone.style.opacity = 0.8;
-            // dropzone.style.pointerEvents = "all";
-            // console.log(dropzone.style.pointerEvents);
-        }
-
-        function onDragLeave() {
-            var dropzone = document.getElementById("drop_file_zone");
-            // dropzone.style.backgroundColor = "transparent";
-                // dropzone.style.opacity = 0;
-                // dropzone.style.pointerEvents = "none";
-                // console.log(dropzone.style.pointerEvents);
-        }
-
-        window.onload = function () {
-            document.addEventListener("drop", function(event) {
-                // console.log(dropzone.style.pointerEvents);
-                var table = document.getElementById("table_files");
-
-                Array.from(event.dataTransfer.files).forEach((file) => {
-                    var lastRow = table.rows[ table.rows.length - 1 ];
-                    var row = table.insertRow(-1);
-                    var cell_id = row.insertCell(0);
-                    var cell_filename = row.insertCell(1);
-                    var cell_size = row.insertCell(2);
-                    var cell_actions = row.insertCell(3);
-
-                    lastId = parseInt(lastRow.cells[0].innerHTML)
-                    cell_id.innerHTML = lastId ? lastId + 1 : 1;
-                    cell_filename.innerHTML = file.name;
-                    cell_size.innerHTML = file.size + " Bit";
-                    cell_actions.innerHTML = '<form method="post" name="form_actions">' +
-                        '<input type="submit" class="btn btn-outline-danger" name="input_delete" value="Delete">' +
-                    '</form>';
-                })
-                
-            });
-    
-            var countDownDate = new Date("Mar 14, 2021 00:23:56").getTime();
-            document.getElementById("trayExpirationTime").innerHTML = "CALCULATING..."
-            var x = setInterval(function() {
-                var now = new Date().getTime();
-                var distance = countDownDate - now;
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("trayExpirationTime").innerHTML =  days*24+hours.toString() + ":"
-                + (minutes.toString().length == 1 ? "0" + minutes : minutes) + ":" + (seconds.toString().length == 1 ? "0" + seconds : seconds);
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("trayExpirationTime").innerHTML = "EXPIRED";
-                }
-            }, 1000);
-        }
-
-        var fileobj;
-        function upload_file(e) {
-            e.preventDefault();
-            fileobj = e.dataTransfer.files[0];
-            //ajax_file_upload(fileobj);
-        }
-        
-        function file_explorer() {
-            document.getElementById('selectfile').click();
-            document.getElementById('selectfile').onchange = function() {
-                fileobj = document.getElementById('selectfile').files[0];
-                ajax_file_upload(fileobj);
-            };
-        }
-        
-        function ajax_file_upload(file_obj) {
-            // if(file_obj != undefined) {
-            //     var form_data = new FormData();                  
-            //     form_data.append('file', file_obj);
-            //     $.ajax({
-            //         type: 'POST',
-            //         url: 'fileupload.php',
-            //         contentType: false,
-            //         processData: false,
-            //         data: form_data,
-            //         success:function(response) {
-            //             alert(response);
-            //             $('#selectfile').val('');
-            //         }
-            //     });
-            // }
-        }
-    </script>
+    <script src="../scripts/script.js"></script>
 </head>
 <style>
     body {
@@ -253,6 +138,18 @@
         border: 0;
         box-sizing: content-box;
         text-align: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white
+    }
+        
+    .input_code:focus {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    #label_form_code {
+        margin-right: 10px;
+        color: black
     }
 
     .centered {
@@ -299,9 +196,9 @@
     }
 </style>
 <body>
-    <nav class="navbar navbar-custom navbar-expand-lg" style="z-index: 1">
+    <nav class="navbar navbar-custom navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index"><img src="appicon.png"></a>
+            <a class="navbar-brand" href="../index"><img src="../assets/images/appicon.png"></a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -311,7 +208,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Storage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Create Tray</a>
+                        <a class="nav-link" href="traycreation">Create Tray</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -320,19 +217,23 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">What is the point of this?</a></li>
                             <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="help">Help Documentation</a></li>
                             <li><a class="dropdown-item" href="#">Terms of Policies</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" method="get" name="form_code">
-                    <input type="submit" class="btn btn-outline-primary" name="submit_createtray" value="Create Tray">
+                <label for="form_code" id="label_form_code">Code for searched tray:</label>
+                <form class="d-flex" method="post" name="form_code">
+                    <input class="form-control me-2 input_code" type="number" tabindex="1" aria-label="Search" name="input_code1" onkeydown="if(event.keyCode!=8) { if(event.keyCode==13) { checkCodeValidity(); } else if(value.length == 1) { return false; } }" onkeyup="if(event.keyCode != 8) { if(value.length == 1) { document.form_code.elements[this.tabIndex].focus() } }">
+                    <input class="form-control me-2 input_code" type="number" tabindex="2" aria-label="Search" name="input_code2" onkeydown="if(event.keyCode!=8) { if(event.keyCode==13) { checkCodeValidity(); } else if(value.length == 1) { return false; } }" onkeyup="if(event.keyCode != 8) { if(value.length == 1) { document.form_code.elements[this.tabIndex].focus() } } else { document.form_code.elements[this.tabIndex-2].focus() }">
+                    <input class="form-control me-2 input_code" type="number" tabindex="3" aria-label="Search" name="input_code3" onkeydown="if(event.keyCode!=8) { if(event.keyCode==13) { checkCodeValidity(); } else if(value.length == 1) { return false; } }" onkeyup="if(event.keyCode != 8) { if(value.length == 1) { document.form_code.elements[this.tabIndex].focus() } } else { document.form_code.elements[this.tabIndex-2].focus() }">
+                    <input class="form-control me-2 input_code" type="number" tabindex="4" aria-label="Search" name="input_code4" onkeydown="if(event.keyCode!=8) { if(event.keyCode==13) { checkCodeValidity(); } }" onkeyup="if(event.keyCode != 8) { if(value.length == 1) { checkCodeValidity(); } } else { document.form_code.elements[this.tabIndex-2].focus() }">
                 </form>
             </div>
         </div>
     </nav>
-    <div class="centered">
-        <lottie-player src="empty.json" style="pointer-events: none;" background="transparent" speed="1" autoplay></lottie-player>
+    <div class="centered" id="emptyTableAnimation">
+        <lottie-player src="../assets/animations/empty.json" style="pointer-events: none;" background="transparent" speed="1" autoplay></lottie-player>
         <div class="text_help">Drop files, or click <a href="">here</a></div>
     </div>
     <!-- <div id="drop_file_zone"></div> -->

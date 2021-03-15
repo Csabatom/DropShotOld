@@ -435,7 +435,7 @@
     <title>Document</title>
     <style>
         body {
-            background-image: url("bodybackground.png");
+            background-image: url("assets/images/bodybackground.png");
             background-repeat: no-repeat;
             background-position: top right;
             background-size: 70vw;
@@ -528,52 +528,7 @@
             z-index: -1;
         }
     </style>
-    <script>
-        function checkCodeValidity() {
-            var form = document.forms["form_code"];
-            var input_code1 = form['input_code1'].value;
-            var input_code2 = form['input_code2'].value;
-            var input_code3 = form['input_code3'].value;
-            var input_code4 = form['input_code4'].value;
-            if(input_code1 != '' && input_code2 != '' && input_code3 != '' && input_code4 != '') {
-                // alert("Valid code!")
-                form.submit();
-            } else {
-                // alert("Invalid code!")
-            $('#modal_invalidcode').modal('show')
-            }
-        }
-
-        window.onload = function () {
-            $('#modal_cookieacception').modal('show')
-            var countDownDate = new Date("Mar 14, 2021 00:23:56").getTime();
-            document.getElementById("trayExpirationTime").innerHTML = "CALCULATING..."
-            var x = setInterval(function() {
-                var now = new Date().getTime();
-                var distance = countDownDate - now;
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("trayExpirationTime").innerHTML =  days*24+hours.toString() + ":"
-                + (minutes.toString().length == 1 ? "0" + minutes : minutes) + ":" + (seconds.toString().length == 1 ? "0" + seconds : seconds);
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("trayExpirationTime").innerHTML = "EXPIRED";
-                }
-            }, 1000);
-        }
-
-        function isTogglerOpen() {
-            if ($(".navbar-toggler").hasClass("collapsed")) {
-                $(".navbar").css('background-color', 'transparent');
-                $("#label_form_code").css('color', 'white');
-            } else {
-                $(".navbar").css('background-color', 'white');
-                $("#label_form_code").css('color', 'black');
-            }
-        }
-    </script>
+    <script src="scripts/script.js"></script>
 </head>
 <body>
     <div class="modal fade" id="modal_invalidcode">
@@ -622,7 +577,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Storage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="traycreation">Create Tray</a>
+                        <a class="nav-link" href="routes/traycreation">Create Tray</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -649,9 +604,9 @@
     <div class="col-sm-4 content">
         <h1>Bored of transfering files through cloud or cable?</h1>
         <h3 style="font-weight: normal">This is what this page is for!</h3>
-        <a href="howtostart" style="color: black"><p>Okay great, but how do I start?</p></a>
+        <a href="routes/howtostart" style="color: black"><p>Okay great, but how do I start?</p></a>
         <div>
-            <a href="traycreation">
+            <a href="routes/traycreation">
                 <button class="btn btn-primary">
                     Create Tray
                 </button>

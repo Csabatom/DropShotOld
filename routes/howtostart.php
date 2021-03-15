@@ -38,12 +38,22 @@
         }
 
         .input_code {
-            background-color: #f2f2f2;
-            
             width: 1ch;
             border: 0;
             box-sizing: content-box;
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white
+        }
+        
+        .input_code:focus {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        #label_form_code {
+            margin-right: 10px;
+            color: black
         }
 
         .centered {
@@ -101,65 +111,13 @@
         .container ol {
             font-size: 22pt;
         }
-        
-        .steppercircle {
-
-        }
     </style>
-    <script>
-        function checkCodeValidity() {
-            var form = document.forms["form_code"];
-            var input_code1 = form['input_code1'].value;
-            var input_code2 = form['input_code2'].value;
-            var input_code3 = form['input_code3'].value;
-            var input_code4 = form['input_code4'].value;
-            if(input_code1 != '' && input_code2 != '' && input_code3 != '' && input_code4 != '') {
-                // alert("Valid code!")
-                form.submit();
-            } else {
-                // alert("Invalid code!")
-            }
-        }
-
-        window.onload = function () {
-            var countDownDate = new Date("Mar 14, 2021 00:23:56").getTime();
-            document.getElementById("trayExpirationTime").innerHTML = "CALCULATING..."
-            var x = setInterval(function() {
-                var now = new Date().getTime();
-                var distance = countDownDate - now;
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("trayExpirationTime").innerHTML =  days*24+hours.toString() + ":"
-                + (minutes.toString().length == 1 ? "0" + minutes : minutes) + ":" + (seconds.toString().length == 1 ? "0" + seconds : seconds);
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("trayExpirationTime").innerHTML = "EXPIRED";
-                }
-            }, 1000);
-        }
-
-        $(document).ready(function () {
-        $(".navbar-toggle").on("click", function () {
-            $(this).toggleClass("active");
-        });
-        $(document).on('click',function(){
-        if(!$(event.target).closest('.navbar-toggle').length) {
-            if ($('.navbar-toggle').hasClass('active') ) {
-                $('.collapse').collapse('hide');
-                $(".navbar-toggle").toggleClass("active");
-            }
-            }
-        });
-        
-        });
-    </script>
+    <script src="../scripts/script.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-custom fixed-top navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index"><img src="appicon.png"></a>
+            <a class="navbar-brand" href="../index"><img src="../assets/images/appicon.png"></a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -178,12 +136,12 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">What is the point of this?</a></li>
                             <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="help">Help Documentation</a></li>
                             <li><a class="dropdown-item" href="#">Terms of Policies</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                 </ul>
-                <label for="form_code" style="margin-right: 10px; color: black">Code for searched tray:</label>
+                <label for="form_code" id="label_form_code">Code for searched tray:</label>
                 <form class="d-flex" method="post" name="form_code">
                     <input class="form-control me-2 input_code" type="number" tabindex="1" aria-label="Search" name="input_code1" onkeydown="if(event.keyCode!=8) { if(event.keyCode==13) { checkCodeValidity(); } else if(value.length == 1) { return false; } }" onkeyup="if(event.keyCode != 8) { if(value.length == 1) { document.form_code.elements[this.tabIndex].focus() } }">
                     <input class="form-control me-2 input_code" type="number" tabindex="2" aria-label="Search" name="input_code2" onkeydown="if(event.keyCode!=8) { if(event.keyCode==13) { checkCodeValidity(); } else if(value.length == 1) { return false; } }" onkeyup="if(event.keyCode != 8) { if(value.length == 1) { document.form_code.elements[this.tabIndex].focus() } } else { document.form_code.elements[this.tabIndex-2].focus() }">
